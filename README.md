@@ -205,48 +205,6 @@ We measure precision, recall, F1 and ROC-AUC of each detector at flagging the in
 
 ---
 
-## How to present this
-
-If you only have ~10 minutes, here's a slide-by-slide skeleton you can follow.
-
-1. **Title slide** — your name, project title, course.
-2. **The problem** (1 slide) — ABAC is fine-grained and powerful, but the attributes it relies on are exactly the data users want to keep private. All three reference papers attack this from different angles (HE, blockchain, HABS).
-3. **Our contribution** (1 slide) — instead of a new crypto scheme, we **measure** the tradeoff using ML on a synthetic but realistic ABAC dataset.
-4. **The dataset** (1 slide) — show one row of `abac_dataset.csv`. Explain the four entity types (subject, object, environment, action) and the label.
-5. **Experiment 1 results** (1 slide) — show `classifier_comparison.png`. Point at the F1 column.
-6. **Experiment 2 results** (1 slide) — show `privacy_tradeoff.png`. **This is your money slide.** Stress the 16% F1 cost of full privacy and the 0% cost of coarsening.
-7. **Experiment 3 results** (1 slide) — show `anomaly_detection.png`. Explain that this is a defence layer *on top* of ABAC.
-8. **How this connects to the papers** (1 slide) — Kerl's HE wants Regime D performance with Regime A info. Ghorbel's blockchain provides accountability for what our anomaly detector flags. Chaturvedi's privacy levels 0/1/2 map onto our Regimes A/C/D.
-9. **Limitations & future work** (1 slide) — synthetic data, single policy, no real attacker model, no integration with real crypto primitives.
-10. **Q&A**.
-
-**Demo idea:** in front of the audience, edit `1_generate_dataset.py` to change `N_REQUESTS = 10000` to `N_REQUESTS = 2000`, re-run `run_all.py`, and show that smaller training sets affect Regime D far more than Regime A. That's a great way to make the privacy-utility curve tangible.
-
----
-
-## Frequently asked questions
-
-**Q: This isn't *real* health data — does that matter?**
-For a mini-project, no. The point is to show how the tradeoffs *behave*. With real data the absolute numbers would change but the qualitative story (coarsening is cheap, removal is expensive, ML can flag anomalies) would not.
-
-**Q: Why is Random Forest used in Experiment 2 specifically?**
-It strikes the best speed/accuracy balance from Experiment 1 — high F1 (~0.97) and fast to train (~0.5 s), so we can re-train it four times without slowing the demo.
-
-**Q: Why does Logistic Regression do badly compared to trees?**
-Because the policy is rule-based with lots of interactions (e.g., "doctor AND same department OR emergency"). Trees naturally express this; a linear model can't without explicit interaction features.
-
-**Q: How do I cite the reference papers in my report?**
-* Kerl, M., Bodin, U., Schelén, O. (2025). *Privacy-preserving attribute-based access control using homomorphic encryption.* Cybersecurity, 8:5.
-* Ghorbel, A., Ghorbel, M., Jmaiel, M. (2022). *Accountable privacy preserving attribute-based access control for cloud services enforced using blockchain.* International Journal of Information Security, 21:489–508.
-* Chaturvedi, G. K., Shirole, M. (2024). *ABAC-PA²: Attribute-Based Access Control Model with Privacy aware Anonymous Access.* Procedia Computer Science, 237:147–154.
-
-**Q: How do I extend this for a bigger project?**
-* Add **differential privacy** (use `diffprivlib`) instead of coarsening and compare.
-* Try a **real dataset** like Amazon Access Samples on UCI.
-* Implement a **simple Paillier-based encryption** of the most sensitive numerical attributes and measure ML accuracy on the encrypted values (this would directly extend Kerl 2025).
-* Replace the rule-based policy with a **learned policy** (treat the original training data as labelled examples and let the model define the policy).
-
----
 
 ## References
 
