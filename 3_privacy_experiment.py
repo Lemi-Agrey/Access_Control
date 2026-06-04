@@ -1,33 +1,3 @@
-"""
-Step 3: Privacy–Utility Tradeoff
-=================================
-The three reference papers all address the same fundamental tension:
-
-  * Fine-grained ABAC needs detailed attributes to make good decisions.
-  * Those same attributes (health data, role, age, smoking habits, ...)
-    are exactly what users want to keep private.
-
-We measure this tradeoff empirically.  We re-train the Random Forest from
-Step 2 under four privacy regimes and compare its F1 score:
-
-  Regime A  — FULL                      All attributes visible (no privacy).
-  Regime B  — ANONYMISE SUBJECT IDs     Subject role + dept hidden; only
-                                        clearance / experience kept.
-                                        (mirrors anonymous-access in
-                                        Chaturvedi & Shirole 2024)
-  Regime C  — COARSEN SENSITIVE         Age binned into ranges, clearance
-                                        bucketed, hour -> "day/night".
-                                        (mirrors k-anonymity-style
-                                        coarsening, also in paper 3)
-  Regime D  — REMOVE SENSITIVE          All subject-identifying and
-                                        location attributes dropped.
-                                        (maximum privacy, minimum utility)
-
-Outputs:
-  - results/privacy_tradeoff.csv
-  - results/privacy_tradeoff.png
-"""
-
 import os
 import warnings
 
