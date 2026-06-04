@@ -1,29 +1,3 @@
-"""
-Step 2: ML Classification of ABAC Decisions
-============================================
-Train and compare 7 ML classifiers on the synthetic ABAC dataset.
-
-Question: Can ML models accurately learn the ABAC policy from labelled
-          access requests, without being given the rules?
-
-We compare:
-  - Logistic Regression  (linear baseline)
-  - Decision Tree        (interpretable, rule-like)
-  - Random Forest        (ensemble of trees)
-  - Gradient Boosting    (boosted ensemble)
-  - k-Nearest Neighbours (instance-based)
-  - Neural Network (MLP) (non-linear)
-  - SVM (RBF kernel)     (margin-based)
-
-For each model we report Accuracy, Precision, Recall, F1, plus training
-and inference time.  Confusion matrices are plotted.
-
-Outputs:
-  - results/classification_results.csv
-  - results/classifier_comparison.png
-  - results/confusion_matrices.png
-"""
-
 import os
 import time
 import warnings
