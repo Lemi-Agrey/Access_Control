@@ -1,24 +1,3 @@
-"""
-Step 4: Anomaly Detection on Access Requests
-=============================================
-Even with privacy-preserving ABAC, attackers may try to gain access by
-submitting *adversarial* requests — e.g., claiming an inflated role,
-bursts of requests, accesses from unusual locations at unusual hours,
-or requesting unusually sensitive objects.
-
-We inject synthetic "adversarial" requests into the test set and measure
-how well three unsupervised anomaly detectors can flag them, having
-been trained only on the (un-labelled) normal traffic.
-
-Detectors compared:
-  - Isolation Forest
-  - One-Class SVM
-  - Local Outlier Factor
-
-Outputs:
-  - results/anomaly_results.csv
-  - results/anomaly_detection.png
-"""
 
 import os
 import warnings
