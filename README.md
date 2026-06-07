@@ -216,4 +216,4 @@ The three reference papers are the source of all motivating examples in this pro
 
 ---
 
-*Generated as a teaching mini-project. All code is heavily commented for beginners — read through each `*.py` file from top to bottom and you should be able to understand and explain it.*
+
